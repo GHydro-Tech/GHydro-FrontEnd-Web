@@ -1,18 +1,54 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
+# ==========================================
+# 1. Angular & Compilação
+# ==========================================
 /dist
 /tmp
 /out-tsc
 /bazel-out
+/.angular
+/.sass-cache
+/coverage
+/typings
+__screenshots__/
 
-# Node
+# ==========================================
+# 2. Dependências & Gerenciadores de Pacotes
+# ==========================================
 /node_modules
-npm-debug.log
-yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
 
-# IDEs and editors
+# ==========================================
+# 3. Arquivos de Ambiente & Segredos
+# ==========================================
+.env
+.env.*
+!.env.example
+src/environments/environment.local.ts
+src/environments/environment.development.local.ts
+
+# ==========================================
+# 4. IDEs e Editores de Texto
+# ==========================================
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# WebStorm / IntelliJ / JetBrains
 .idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / outros
 .project
 .classpath
 .c9/
@@ -20,25 +56,25 @@ yarn-error.log
 .settings/
 *.sublime-workspace
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-.history/*
+# Vim / Emacs
+*.swp
+*~
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
+# ==========================================
+# 5. Arquivos do Sistema Operacional
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# 6. Testes & Outros
+# ==========================================
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
-/typings
-__screenshots__/
-
-# System files
-.DS_Store
-Thumbs.db
