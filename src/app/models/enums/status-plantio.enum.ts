@@ -1,0 +1,5 @@
+export enum StatusPlantio {
+  PLANEJADO = 'PLANEJADO',
+  EM_ANDAMENTO = 'EM_ANDAMENTO',
+  CONCLUIDO = 'CONCLUIDO'
+}
