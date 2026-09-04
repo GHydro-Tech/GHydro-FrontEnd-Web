@@ -1,22 +1,3 @@
-<div style="padding: 2.5rem; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem;">
-
-  <h2>GHydro Web - Teste do Tema Lara</h2>
-
-  <!-- Sessão de Campos de Texto -->
-  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-    <label for="nome" style="font-weight: 600;">Nome do Usuário:</label>
-    <input id="nome" type="text" pInputText placeholder="Digite seu nome..." style="width: 100%;" />
-  </div>
-
-  <!-- Sessão de Botões Variados -->
-  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-    <p-button label="Salvar" icon="pi pi-check"></p-button>
-    <p-button label="Editar" icon="pi pi-pencil" severity="secondary"></p-button>
-    <p-button label="Sucesso" icon="pi pi-thumbs-up" severity="success"></p-button>    <p-button label="Excluir" icon="pi pi-trash" severity="danger"></p-button>
-    <p-button icon="pi pi-cog" [rounded]="true" severity="help"></p-button>
-  </div>
-
-</div>
-
-<!-- Mantém o roteamento funcionando para as páginas do sistema -->
-<router-outlet></router-outlet>
+<main>
+  <app-proprietario-form></app-proprietario-form>
+</main>
