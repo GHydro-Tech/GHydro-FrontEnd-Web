@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ProprietarioFormComponent } from './components/proprietario-form/proprietario-form'; //
 
 @Component({
   selector: 'app-root',
@@ -10,10 +9,11 @@ import { ProprietarioFormComponent } from './components/proprietario-form/propri
   imports: [
     RouterOutlet,
     ButtonModule,
-    InputTextModule,
-    ProprietarioFormComponent
+    InputTextModule
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {}
+export class App {
+  protected readonly title = signal('GHydro-FrontEnd-Web');
+}
