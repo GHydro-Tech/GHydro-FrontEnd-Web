@@ -35,11 +35,7 @@ src/environments/environment.development.local.ts
 # 4. IDEs e Editores de Texto
 # ==========================================
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/
 .history/
 
 # WebStorm / IntelliJ / JetBrains
