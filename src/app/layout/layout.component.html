@@ -1,0 +1,68 @@
+<!-- Container Principal: Ocupa toda a tela e trava o scroll no body -->
+<div class="flex h-screen overflow-hidden surface-ground">
+
+    <!-- BARRA LATERAL (SIDEBAR) -->
+    <!-- Escondida em telas muito pequenas (hidden lg:flex), largura fixa de 16rem -->
+    <div class="hidden lg:flex flex-column w-16rem surface-card border-right-1 surface-border shadow-1 z-1">
+        
+        <!-- Logo -->
+        <div class="h-5rem flex align-items-center px-4 border-bottom-1 surface-border">
+            <i class="pi pi-droplet text-primary text-3xl mr-2"></i>
+            <span class="text-2xl font-bold text-900">GHydro</span>
+        </div>
+
+        <!-- Menu de Navegação -->
+        <div class="flex-1 overflow-y-auto py-4 px-3">
+            <ul class="list-none p-0 m-0 flex flex-column gap-2">
+                @for (item of menuItems; track item.route) {
+                    <li>
+                        <a [routerLink]="item.route" 
+                           routerLinkActive="bg-primary-50 text-primary font-semibold" 
+                           [routerLinkActiveOptions]="{exact: false}"
+                           class="p-ripple flex align-items-center cursor-pointer p-3 border-round-lg text-700 hover:surface-hover transition-colors transition-duration-150 text-decoration-none">
+                            <i [class]="item.icon + ' text-xl mr-3'"></i>
+                            <span class="font-medium text-lg">{{ item.label }}</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!-- Rodapé do Menu (Opcional: Versão do App) -->
+        <div class="p-3 border-top-1 surface-border text-center text-500 text-sm">
+            v1.0.0
+        </div>
+    </div>
+
+    <!-- ÁREA PRINCIPAL -->
+    <div class="flex-1 flex flex-column overflow-hidden relative">
+        
+        <!-- CABEÇALHO (TOPBAR) -->
+        <div class="h-5rem surface-card border-bottom-1 surface-border flex align-items-center justify-content-between px-4 shadow-1 z-1">
+            
+            <!-- Botão Menu Mobile (aparece só em telas pequenas) -->
+            <div>
+                <p-button icon="pi pi-bars" [rounded]="true" [text]="true" styleClass="lg:hidden text-700 text-2xl"></p-button>
+            </div>
+
+            <!-- Perfil e Ações do Usuário -->
+            <div class="flex align-items-center gap-3">
+                <p-button icon="pi pi-bell" [rounded]="true" [text]="true" severity="secondary"></p-button>
+                
+                <div class="flex align-items-center gap-2 cursor-pointer p-2 border-round hover:surface-hover transition-colors">
+                    <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" size="normal"></p-avatar>
+                    <span class="font-medium text-900 hidden sm:block">Admin</span>
+                    <i class="pi pi-angle-down text-700 hidden sm:block"></i>
+                </div>
+
+                <p-button icon="pi pi-sign-out" [rounded]="true" [text]="true" severity="danger" (onClick)="sair()" pTooltip="Sair"></p-button>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO DINÂMICO (ONDE AS TELAS ENTRAM) -->
+        <div class="flex-1 overflow-y-auto p-4 md:p-5">
+            <!-- Esse router-outlet renderiza as telas filhas (Dashboard, Sensores, etc) -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

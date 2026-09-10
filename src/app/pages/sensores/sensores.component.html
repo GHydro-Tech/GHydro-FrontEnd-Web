@@ -1,0 +1,80 @@
+<p-toast></p-toast>
+
+<div class="surface-card p-4 shadow-2 border-round">
+    <div class="flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0 text-900 font-medium text-2xl">Gerenciar Sensores</h2>
+        <p-button label="Novo Sensor" icon="pi pi-plus" (onClick)="abrirNovo()"></p-button>
+    </div>
+
+    <p-table [value]="sensores" [paginator]="true" [rows]="10" responsiveLayout="scroll" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Setor (ID)</th>
+                <th>Status</th>
+                <th>Bateria</th>
+                <th>Data Instalação</th>
+                <th class="text-right">Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-sensor>
+            <tr>
+                <td>{{ sensor.id }}</td>
+                <td>{{ sensor.setor?.id }}</td>
+                <td>
+                    <span class="px-2 py-1 border-round text-sm" 
+                          [class.bg-green-100]="sensor.status === 'ATIVO'" [class.text-green-700]="sensor.status === 'ATIVO'"
+                          [class.bg-red-100]="sensor.status === 'INATIVO'" [class.text-red-700]="sensor.status === 'INATIVO'">
+                        {{ sensor.status }}
+                    </span>
+                </td>
+                <td>{{ sensor.nivelBateria }}%</td>
+                <td>{{ sensor.dataInstalacao | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td class="text-right">
+                    <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" severity="info" (onClick)="editarSensor(sensor)"></p-button>
+                    <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" (onClick)="deletar(sensor.id)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr><td colspan="6" class="text-center p-4">Nenhum sensor encontrado.</td></tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<!-- Modal de Cadastro/Edição -->
+<p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Detalhes do Sensor" [modal]="true">
+    <form [formGroup]="sensorForm" class="flex flex-column gap-3 mt-3">
+        
+        <div class="flex flex-column gap-2">
+            <label class="font-medium text-900">ID do Setor *</label>
+            <p-inputNumber formControlName="setorId" placeholder="Ex: 1" class="w-full"></p-inputNumber>
+        </div>
+
+        <div class="flex flex-column gap-2">
+            <label class="font-medium text-900">Status *</label>
+            <!-- Troque p-dropdown por p-select -->
+            <p-select [options]="opcoesStatus" formControlName="status" appendTo="body" styleClass="w-full"></p-select>
+        </div>
+
+        <div class="flex flex-column gap-2">
+            <label class="font-medium text-900">Tipos de Leitura *</label>
+            <p-multiselect [options]="opcoesTipos" formControlName="tipos" defaultLabel="Selecione os tipos" appendTo="body" styleClass="w-full"></p-multiselect>
+        </div>
+
+        <div class="flex flex-column gap-2">
+            <label class="font-medium text-900">Nível de Bateria (%)</label>
+            <p-inputNumber formControlName="nivelBateria" class="w-full"></p-inputNumber>
+        </div>
+
+        <div class="flex flex-column gap-2">
+            <label class="font-medium text-900">Data de Instalação *</label>
+            <p-datepicker formControlName="dataInstalacao" appendTo="body" dateFormat="dd/mm/yy" styleClass="w-full"></p-datepicker>
+        </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <p-button label="Cancelar" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="exibirDialog = false"></p-button>
+        <p-button label="Salvar" icon="pi pi-check" [disabled]="sensorForm.invalid" (onClick)="salvar()"></p-button>
+    </ng-template>
+</p-dialog>
