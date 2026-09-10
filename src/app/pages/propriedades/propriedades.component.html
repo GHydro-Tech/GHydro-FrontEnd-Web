@@ -1,0 +1,43 @@
+<div class="surface-card p-4 shadow-2 border-round">
+  <div class="flex flex-column md:flex-row justify-content-between align-items-center mb-4">
+    <div class="mb-3 md:mb-0">
+      <h2 class="m-0 text-900 font-semibold text-2xl">Gerenciar Propriedades</h2>
+      <span class="text-600">Visualize e gerencie as propriedades rurais cadastradas.</span>
+    </div>
+    <p-button label="Nova Propriedade" icon="pi pi-plus" severity="primary"></p-button>
+  </div>
+
+  <!-- Tabela -->
+  <p-table [value]="propriedades" [paginator]="true" [rows]="5" responsiveLayout="scroll" styleClass="p-datatable-sm">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>ID</th>
+        <th>Nome da Propriedade</th>
+        <th>Localização</th>
+        <th>Tamanho (Hectares)</th>
+        <th>Status do Solo</th>
+        <th class="text-center">Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-propriedade>
+      <tr>
+        <td>{{ propriedade.id }}</td>
+        <td class="font-medium text-900">{{ propriedade.nome }}</td>
+        <td>{{ propriedade.localizacao }}</td>
+        <td>{{ propriedade.hectares }} ha</td>
+        <td>
+          <p-tag [severity]="propriedade.status === 'Ideal' ? 'success' : 'warn'" [value]="propriedade.status"></p-tag>
+        </td>
+        <td class="flex justify-content-center gap-2">
+          <p-button icon="pi pi-pencil" [rounded]="true" [text]="true" severity="info" pTooltip="Editar"></p-button>
+          <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger" pTooltip="Excluir"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" class="text-center p-4 text-600">Nenhuma propriedade cadastrada ainda.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

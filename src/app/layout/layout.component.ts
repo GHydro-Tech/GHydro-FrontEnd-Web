@@ -29,7 +29,8 @@ export class LayoutComponent {
     { label: 'Proprietários', icon: 'pi pi-users', route: '/admin/proprietarios' },
     { label: 'Sensores', icon: 'pi pi-wifi', route: '/admin/sensores' },
     { label: 'Tipos de Solo', icon: 'pi pi-globe', route: '/admin/tipos-solo' },
-    { label: 'Recomendações', icon: 'pi pi-chart-line', route: '/admin/recomendacoes' }
+    { label: 'Recomendações', icon: 'pi pi-chart-line', route: '/admin/recomendacoes' },
+    { label: 'Propriedades', icon: 'pi pi-map', route: '/propriedades' }
   ];
 
   sair() {
