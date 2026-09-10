@@ -1,0 +1,69 @@
+<!-- Fundo da tela ocupando 100% da altura e usando as cores semânticas do seu preset -->
+<div class="flex align-items-center justify-content-center min-h-screen surface-ground">
+    
+    <!-- Card centralizado com PrimeFlex (largura responsiva) -->
+    <p-card styleClass="w-full sm:w-30rem shadow-4 p-3 border-round-xl">
+        
+        <!-- Cabeçalho / Logo -->
+        <div class="text-center mb-5">
+            <div class="text-900 text-3xl font-medium mb-3 border-circle bg-primary text-white inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                <i class="pi pi-droplet text-3xl"></i>
+            </div>
+            <div class="text-900 text-3xl font-medium mb-3">Bem-vindo ao GHydro</div>
+            <span class="text-600 font-medium">Faça login para acessar o painel de monitoramento</span>
+        </div>
+
+        <!-- Formulário Reativo -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-column gap-4">
+            
+            <div class="flex flex-column gap-2">
+                <label for="email" class="font-medium text-900">E-mail</label>
+                <input 
+                    id="email" 
+                    type="text" 
+                    pInputText 
+                    formControlName="email" 
+                    placeholder="contato@exemplo.com" 
+                    class="w-full" 
+                />
+            </div>
+
+            <div class="flex flex-column gap-2">
+                <label for="senha" class="font-medium text-900">Senha</label>
+                <!-- O feedback="false" remove a barra de força de senha, pois no login não precisamos dela -->
+                <p-password 
+                    id="senha" 
+                    formControlName="senha" 
+                    placeholder="Sua senha" 
+                    [toggleMask]="true" 
+                    [feedback]="false"
+                    styleClass="w-full"
+                    inputStyleClass="w-full"
+                ></p-password>
+            </div>
+
+            <!-- Exibição de Erro -->
+            @if(errorMessage) {
+                <p-message severity="error" styleClass="w-full">
+                    {{ errorMessage }}
+                </p-message>
+            }
+
+            <p-button 
+                label="Entrar" 
+                icon="pi pi-sign-in" 
+                type="submit" 
+                [disabled]="loginForm.invalid || isLoading"
+                [loading]="isLoading"
+                styleClass="w-full mt-3 p-3 text-lg"
+            ></p-button>
+
+            <!-- Link amigável para recuperação de senha (mock) -->
+            <div class="text-center mt-3">
+                <a href="#" class="font-medium text-primary hover:text-primary-600 cursor-pointer no-underline">
+                    Esqueceu sua senha?
+                </a>
+            </div>
+        </form>
+    </p-card>
+</div>

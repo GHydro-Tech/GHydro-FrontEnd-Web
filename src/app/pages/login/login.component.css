@@ -1,0 +1,4 @@
+/* O PrimeFlex cuida de quase todo o layout, mas se precisar forçar o estilo do password internamente: */
+:host ::ng-deep .p-password input {
+    width: 100%;
+}
