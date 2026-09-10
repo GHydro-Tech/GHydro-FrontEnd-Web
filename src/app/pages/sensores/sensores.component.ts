@@ -12,7 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SelectModule } from 'primeng/select';
-import { MultiSelectModule } from 'primeng/multiselect';
+import { CheckboxModule } from 'primeng/checkbox';
 import { DatePickerModule } from 'primeng/datepicker'; // Substituiu o Calendar no PrimeNG 22
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -28,7 +28,7 @@ import { DatePipe } from '@angular/common';
     DialogModule, 
     InputNumberModule, 
     SelectModule,         // O antigo Dropdown que já atualizamos
-    MultiSelectModule,    // <-- Faltava esse para o p-multiSelect funcionar
+    CheckboxModule,    // <-- Faltava esse para o p-checkbox funcionar
     DatePickerModule, 
     ToastModule,
     DatePipe              // <-- Faltava esse para formatar a data

@@ -13,7 +13,6 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       
-      // <-- ADICIONE A ROTA AQUI -->
       { path: 'sensores', component: SensoresComponent }, 
       
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
