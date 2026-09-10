@@ -7,7 +7,9 @@
     </div>
 
     <p-table [value]="sensores" [paginator]="true" [rows]="10" responsiveLayout="scroll" styleClass="p-datatable-sm">
-        <ng-template pTemplate="header">
+        
+        <!-- 1. Trocamos pTemplate="header" por #header -->
+        <ng-template #header>
             <tr>
                 <th>ID</th>
                 <th>Setor (ID)</th>
@@ -17,12 +19,14 @@
                 <th class="text-right">Ações</th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-sensor>
+        
+        <!-- 2. Trocamos pTemplate="body" por #body -->
+        <ng-template #body let-sensor>
             <tr>
                 <td>{{ sensor.id }}</td>
                 <td>{{ sensor.setor?.id }}</td>
                 <td>
-                    <span class="px-2 py-1 border-round text-sm" 
+                    <span class="px-2 py-1 border-round text-sm font-medium" 
                           [class.bg-green-100]="sensor.status === 'ATIVO'" [class.text-green-700]="sensor.status === 'ATIVO'"
                           [class.bg-red-100]="sensor.status === 'INATIVO'" [class.text-red-700]="sensor.status === 'INATIVO'">
                         {{ sensor.status }}
@@ -36,9 +40,11 @@
                 </td>
             </tr>
         </ng-template>
-        <ng-template pTemplate="emptymessage">
+        
+        <!-- 3. Trocamos pTemplate="emptymessage" por #emptymessage -->
+        <ng-template #emptymessage>
             <tr><td colspan="6" class="text-center p-4">Nenhum sensor encontrado.</td></tr>
-        </ng-template>
+        </ng-template>       
     </p-table>
 </div>
 
