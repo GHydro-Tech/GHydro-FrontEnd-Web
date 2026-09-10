@@ -1,0 +1,19 @@
+<div class="flex align-items-center justify-content-center min-h-screen bg-primary-50">
+  <p-card header="GHydro - Login" [style]="{ width: '25rem' }">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-column gap-3">
+      
+      <div class="flex flex-column gap-2">
+        <label for="login">Usuário</label>
+        <input pInputText id="login" formControlName="login" placeholder="Digite seu usuário" />
+      </div>
+
+      <div class="flex flex-column gap-2">
+        <label for="senha">Senha</label>
+        <p-password id="senha" formControlName="senha" [feedback]="false" placeholder="Digite sua senha"></p-password>
+      </div>
+
+      <p-button label="Entrar" type="submit" [disabled]="loginForm.invalid" class="w-full mt-3"></p-button>
+      
+    </form>
+  </p-card>
+</div>
